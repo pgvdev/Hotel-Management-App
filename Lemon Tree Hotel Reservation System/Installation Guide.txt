@@ -1,0 +1,46 @@
+Installation Guide for Lemon Tree Hotel Reservation System
+
+Requirements
+-------------
+
+- Required Libraries:
+  - tkinter (GUI)
+  - PIL (Pillow for image processing)
+  - mysql-connector-python (for database connectivity)
+  - tkcalendar (for date selection)
+  - random, datetime, and time (built-in libraries)
+
+
+Step 1: Install Required Dependencies
+-------------------------------------
+Run the following command in your terminal or command prompt to install all necessary dependencies:
+
+pip install pillow mysql-connector-python tkcalendar
+
+Step 2: Set Up MySQL Database
+-----------------------------
+1. Install MySQL Server if not already installed.
+
+2. Open MySQL Workbench
+
+3. Create the database by running the SQL script provided in the "MySQL Database.sql" file:
+   - Open MySQL Workbench.
+   - Select a connection and create a new query.
+   - Load and execute "MySQL Database.sql".
+
+4. Ensure the MySQL credentials in the Python files (e.g., host="localhost", user="root", password="yourpassword", database="management") match your database setup.
+
+Step 3: Running the Application
+-------------------------------
+1. Extract all the files into a preferred directory.
+
+2. Run the main application file:
+
+   hotel.py
+
+3. The Hotel Management System window should open.
+
+
+Additional Customization
+------------------------
+- Modify images path in Python files if needed.

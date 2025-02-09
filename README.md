@@ -402,3 +402,157 @@ Open Command Prompt (Windows) / Terminal (Mac/Linux) and run:</span></p>
 </ul>
 <hr />
 <br />
+
+
+
+
+<h1 style="text-align: center;"><span style="font-family: times;">Configuring and Customizing the Lemon Tree Hotel Management Booking App</span></h1><div><span style="font-family: times;"><br /></span></div>
+<p style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">The Lemon Tree Hotel Management Booking App allows users to modify settings, customize behaviors, and personalize system configurations. This includes database connections, UI elements, room settings, and reservation policies.</span></span></p>
+<hr style="text-align: left;" />
+<h2><span style="font-family: times;">1. Configuring Database &amp; Authentication Settings</span></h2><h3><span style="font-weight: normal;"><span style="font-family: times;">A. Modify MySQL Connection Settings</span></span></h3>
+
+<p style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">By default, the app connects to a local MySQL database. Users can change the database host, username, and password inside the Python files.</span></span></p>
+<h4><span style="font-weight: normal;"><span style="font-family: times;">Steps to Update Database Credentials</span></span></h4>
+<ol>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Open the following Python files:</span></span></div><ul>
+<li style="text-align: left;"><code inline="" style="font-weight: normal;"><span style="font-family: times;">hotel.py</span></code></li>
+<li style="text-align: left;"><code inline="" style="font-weight: normal;"><span style="font-family: times;">room.py</span></code></li>
+<li style="text-align: left;"><code inline="" style="font-weight: normal;"><span style="font-family: times;">reservations.py</span></code></li>
+<li style="text-align: left;"><code inline="" style="font-weight: normal;"><span style="font-family: times;">customer.py</span></code></li>
+</ul>
+</li>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Locate the database connection section:</span></span></div><pre><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">conn = mysql.connector.connect(</span></span></div><code class="language-python" style="font-weight: normal;"><span style="font-family: times;"><div style="text-align: left;">    host="localhost",</div><div style="text-align: left;">    user="root",</div><div style="text-align: left;">    password="yourpassword",</div><div style="text-align: left;">    database="management"</div><div style="text-align: left;">)</div></span></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Update the values</span><span style="font-weight: normal;"> to match your MySQL settings:</span></span></div><pre><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">conn = mysql.connector.connect(</span></span></div><code class="language-python" style="font-weight: normal;"><span style="font-family: times;"><div style="text-align: left;">    host="your-server-ip",</div><div style="text-align: left;">    user="admin_user",</div><div style="text-align: left;">    password="securepassword",</div><div style="text-align: left;">    database="hotel_db"</div><div style="text-align: left;">)</div></span></code></pre>
+</li>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Save the changes and restart the app.</span></span></li>
+</ol>
+<hr style="text-align: left;" />
+<h3><span style="font-weight: normal;"><span style="font-family: times;">B. Change Database Name</span></span></h3>
+<p style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">By default, the database is named "management". To use a different database:</span></span></p>
+<ol>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Open MySQL Workbench or another MySQL tool.</span></span></li>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Rename the database or create a new one:</span></span></div><pre style="text-align: left;"><code class="language-sql" style="font-weight: normal;"><span style="font-family: times;">CREATE DATABASE hotel_system;
+</span></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Update all Python files to reflect the new name:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">database="hotel_system"
+</span></code></pre>
+</li>
+</ol>
+<hr style="text-align: left;" />
+<h2><span style="font-family: times;">2. UI Customization (Changing App Appearance)</span></h2><h3><span style="font-weight: normal;"><span style="font-family: times;">A. Modify Window Size &amp; Layout</span></span></h3>
+
+<ul>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">The </span><span style="font-weight: normal;">default window size</span><span style="font-weight: normal;"> is set in </span><code inline="" style="font-weight: normal;">hotel.py</code><span style="font-weight: normal;">:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">self.master.geometry("1440x900+0+0")  # Width x Height + X Position + Y Position
+</span></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Change the </span><span style="font-weight: normal;">window dimensions</span><span style="font-weight: normal;"> as needed:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">self.master.geometry("1280x720+100+50")  # Adjusted for 720p screens
+</span></code></pre>
+</li>
+</ul>
+<h3><span style="font-weight: normal;"><span style="font-family: times;">B. Update Background Colors &amp; Themes</span></span></h3>
+<ul>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">The </span><span style="font-weight: normal;">default color</span><span style="font-weight: normal;"> for forms is set in </span><code inline="" style="font-weight: normal;">room.py</code><span style="font-weight: normal;">, </span><code inline="" style="font-weight: normal;">reservations.py</code><span style="font-weight: normal;">, and </span><code inline="" style="font-weight: normal;">customer.py</code><span style="font-weight: normal;">:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">self.master.configure(bg="#d84c42")  # Red color
+</span></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Change the </span><span style="font-weight: normal;">background color</span><span style="font-weight: normal;"> by replacing the </span><span style="font-weight: normal;">hex code</span><span style="font-weight: normal;">:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">self.master.configure(bg="#2c3e50")  # Dark Blue theme
+</span></code></pre>
+</li>
+</ul>
+<h3><span style="font-weight: normal;"><span style="font-family: times;">C. Replace Button &amp; Banner Images</span></span></h3>
+<p style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">The UI loads images for banners, buttons, and logos from local files.</span></span></p>
+<ul>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Example (from </span><code inline="" style="font-weight: normal;">hotel.py</code><span style="font-weight: normal;">):</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">img1 = Image.open("/Users/pop/Downloads/travelbanner.png")
+</span></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">To </span><span style="font-weight: normal;">use a different image</span><span style="font-weight: normal;">, update the file path:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">img1 = Image.open("assets/new_banner.png")
+</span></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Recommended </span><span style="font-weight: normal;">image size</span><span style="font-weight: normal;">:</span></span></div><ul>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Top Banner: <code inline="">1440x200 pixels</code></span></span></li>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Button Icons: <code inline="">94x29 pixels</code></span></span></li>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Main Background: <code inline="">1440x668 pixels</code></span></span></li>
+</ul>
+</li>
+</ul>
+<hr style="text-align: left;" />
+<h2><span style="font-family: times;">3. Room &amp; Reservation Settings</span></h2><h3><span style="font-weight: normal;"><span style="font-family: times;">A. Change Available Room Types</span></span></h3>
+
+<p style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">By default, the system supports Single and Double rooms. To add more:</span></span></p>
+<ol>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Open </span><code inline="" style="font-weight: normal;">room.py</code><span style="font-weight: normal;"> and find:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">combobox_room_type["value"] = ("Single", "Double")
+</span></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Add new room types:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">combobox_room_type["value"] = ("Single", "Double", "Queen Suite", "King Suite")
+</span></code></pre>
+</li>
+</ol>
+<h3><span style="font-weight: normal;"><span style="font-family: times;">B. Set Default Room Prices</span></span></h3>
+<p style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">The system does not store default room rates, but you can add pricing logic.</span></span></p>
+<ol>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Open </span><code inline="" style="font-weight: normal;">reservations.py</code><span style="font-weight: normal;"> and find the pricing dictionary:</span></span></div><pre><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">room_type_rates = {</span></span></div><code class="language-python" style="font-weight: normal;"><span style="font-family: times;"><div style="text-align: left;">    "Single": 100,</div><div style="text-align: left;">    "Double": 150</div><div style="text-align: left;">}</div></span></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Add new rates:</span></span></div><pre><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">room_type_rates = {</span></span></div><code class="language-python" style="font-weight: normal;"><span style="font-family: times;"><div style="text-align: left;">    "Single": 100,</div><div style="text-align: left;">    "Double": 150,</div><div style="text-align: left;">    "Queen Suite": 200,</div><div style="text-align: left;">    "King Suite": 300</div><div style="text-align: left;">}</div></span></code></pre>
+</li>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">The system will now calculate room costs automatically.</span></span></li>
+</ol>
+<hr style="text-align: left;" />
+<h2><span style="font-family: times;">4. Reservation &amp; Payment Customization</span></h2><h3><span style="font-weight: normal;"><span style="font-family: times;">A. Modify VAT &amp; Discounts</span></span></h3>
+
+<ul>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Premium customers automatically receive a discount. To change it:</span></span></li>
+</ul>
+<ol>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Open </span><code inline="" style="font-weight: normal;">reservations.py</code><span style="font-weight: normal;"> and find:</span></span></div><pre><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">if customer_type == "premium":</span></span></div><code class="language-python" style="font-weight: normal;"><div style="text-align: left;"><span style="font-family: times;">    discount_value = "10"  # 10% discount</span></div></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Change the value (e.g., </span><span style="font-weight: normal;">15% discount</span><span style="font-weight: normal;">):</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">discount_value = "15"
+</span></code></pre>
+</li>
+</ol>
+<ul>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">The default </span><span style="font-weight: normal;">VAT rate</span><span style="font-weight: normal;"> is </span><code inline="" style="font-weight: normal;">20%</code><span style="font-weight: normal;">. To change it:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">self.var_VAT.set("15")  # Set VAT to 15%
+</span></code></pre>
+</li>
+</ul>
+<hr style="text-align: left;" />
+</h2><h3><span style="font-weight: normal;"><span style="font-family: times;">B. Change Payment Methods</span></span></h3>
+<p style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">By default, the system supports Cash, Credit Card, and PayPal.</span></span></p>
+<ol>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Open </span><code inline="" style="font-weight: normal;">reservations.py</code><span style="font-weight: normal;"> and find:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">combobox_payment_method["value"] = ("Cash", "Credit Card", "Debit Card", "Google Pay", "Apple Pay", "PayPal")
+</span></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Add new methods:</span></span></div><pre style="text-align: left;"><code class="language-python" style="font-weight: normal;"><span style="font-family: times;">combobox_payment_method["value"] = ("Cash", "Credit Card", "Crypto", "Payoneer")
+</span></code></pre>
+</li>
+</ol>
+<hr style="text-align: left;" />
+<h2><span style="font-family: times;">5. Enabling Security Features</span></h2><h3><span style="font-weight: normal;"><span style="font-family: times;">A. Restrict User Access with Login System</span></span></h3>
+
+<p style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Currently, the app does not require authentication. To enable login:</span></span></p>
+<ol>
+<li><div style="text-align: left;"><span style="font-family: times;"><span style="font-weight: normal;">Add a login screen</span><span style="font-weight: normal;"> before opening the main dashboard:</span></span></div><pre><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">from tkinter import simpledialog</span></span></div><code class="language-python" style="font-weight: normal;"><span style="font-family: times;"><div style="text-align: left;">username = simpledialog.askstring("Login", "Enter Username:")</div><div style="text-align: left;">password = simpledialog.askstring("Login", "Enter Password:", show="*")</div><div style="text-align: left;">if username != "admin" or password != "password123":</div><div style="text-align: left;">    exit()</div></span></code></pre>
+</li>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Modify credentials as needed.</span></span></li>
+</ol>
+<hr style="text-align: left;" />
+<h2><span style="font-family: times;">6. Backup &amp; Restore Data</span></h2><h3><span style="font-weight: normal;"><span style="font-family: times;">A. Automatic Database Backup</span></span></h3>
+
+<p style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">To enable backups, modify <code inline="">hotel.py</code>:</span></span></p>
+<ol>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Import necessary modules:</span></span></div><pre><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">import os</span></span></div><code class="language-python" style="font-weight: normal;"><div style="text-align: left;"><span style="font-family: times;">import datetime</span></div></code></pre>
+</li>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Add a function to create backups:</span></span></div><pre><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">def backup_database():</span></span></div><code class="language-python" style="font-weight: normal;"><span style="font-family: times;"><div style="text-align: left;">    timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")</div><div style="text-align: left;">    os.system(f"mysqldump -u root -pYOURPASSWORD management &gt; backup_{timestamp}.sql")</div></span></code></pre>
+</li>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Call <code inline="">backup_database()</code> at application startup.</span></span></li>
+</ol>
+<hr style="text-align: left;" />
+<h3><span style="font-weight: normal;"><span style="font-family: times;">B. Restoring Data from Backup</span></span></h3>
+<ol>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Open MySQL Workbench.</span></span></li>
+<li><div style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">Run the following SQL command:</span></span></div><pre style="text-align: left;"><code class="language-sql" style="font-weight: normal;"><span style="font-family: times;">SOURCE /path/to/backup.sql;
+</span></code></pre>
+</li>
+<li style="text-align: left;"><span style="font-weight: normal;"><span style="font-family: times;">The database will be restored.</span></span></li>
+</ol>
+<hr style="text-align: left;" />
+<br />

@@ -104,6 +104,10 @@
 <p><strong>Design Patterns Implementation</strong></p>
 </li>
 </ol>
+
+<img alt="image" src="https://github.com/user-attachments/assets/50f9821f-bd36-4787-8b32-bc1dcbc15d18" />
+
+
 <ul>
 <li><strong>Factory Method</strong>: Used for dynamic customer object creation.</li>
 <li><strong>Singleton</strong>: Ensures a single instance for room availability tracking.</li>
